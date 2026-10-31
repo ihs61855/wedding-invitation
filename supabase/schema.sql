@@ -28,6 +28,8 @@ create table if not exists invitation_private.rate_limits (
   window_start timestamptz not null,
   hits integer not null
 );
+alter table invitation_private.settings enable row level security;
+alter table invitation_private.rate_limits enable row level security;
 revoke all on all tables in schema invitation_private from public, anon, authenticated;
 
 do $setup$
@@ -106,6 +108,7 @@ begin
 end;
 $$;
 
+-- 아래는 삭제 함수를 정의하는 구문입니다. 초기 설정 실행 시 댓글을 삭제하지 않습니다.
 create or replace function public.delete_guestbook(p_id uuid, p_password text)
 returns jsonb language plpgsql security definer set search_path = '' as $$
 declare v_hash text; v_deleted uuid;
