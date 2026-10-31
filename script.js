@@ -1,6 +1,7 @@
 (() => {
   "use strict";
   const config = window.INVITATION_CONFIG;
+  const shareUrl = config.useQrUrlForSharing && config.qrUrl ? config.qrUrl : config.siteUrl;
   const $ = id => document.getElementById(id);
   let toastTimer;
   function toast(message) {
@@ -26,17 +27,38 @@
     } catch { toast("복사하지 못했어요. 길게 눌러 복사해 주세요."); }
   }
   $("copy-address").addEventListener("click", () => copy(config.address, "예식장 주소를 복사했어요."));
-  $("copy-link").addEventListener("click", () => copy(config.siteUrl, "청첩장 링크를 복사했어요."));
+  $("copy-link").addEventListener("click", () => copy(shareUrl, "청첩장 링크를 복사했어요."));
   $("share-invitation").addEventListener("click", async () => {
     if (navigator.share) {
       try {
-        await navigator.share({ title: `${config.groom} · ${config.bride}, 우리 결혼합니다`, text: "2027년 3월 6일 오후 2시 20분, 소중한 분들을 초대합니다.", url: config.siteUrl });
-      } catch (error) { if (error.name !== "AbortError") copy(config.siteUrl, "청첩장 링크를 복사했어요."); }
-    } else await copy(config.siteUrl, "청첩장 링크를 복사했어요.");
+        await navigator.share({ title: `${config.groom} · ${config.bride}, 우리 결혼합니다`, text: "2027년 3월 6일 오후 2시 20분, 소중한 분들을 초대합니다.", url: shareUrl });
+      } catch (error) { if (error.name !== "AbortError") copy(shareUrl, "청첩장 링크를 복사했어요."); }
+    } else await copy(shareUrl, "청첩장 링크를 복사했어요.");
   });
   const mapQuery = encodeURIComponent(`${config.venue} ${config.address}`);
   $("naver-map").href = `https://map.naver.com/p/search/${mapQuery}`;
   $("kakao-map").href = `https://map.kakao.com/link/search/${mapQuery}`;
+
+  const accounts = config.accounts || {};
+  $("account-example").hidden = !accounts.isExample;
+  for (const side of ["groom", "bride"]) {
+    const list = $(`${side}-accounts`);
+    for (const account of accounts[side] || []) {
+      const row = element("div", "account-row");
+      const info = element("div", "account-info");
+      const name = element("p", "account-holder");
+      name.append(element("span", "account-relation", account.relation), document.createTextNode(account.holder));
+      const bank = element("p", "account-bank", account.bank);
+      const number = element("p", "account-number", account.number);
+      info.append(name, bank, number);
+      const button = element("button", "account-copy", "복사 ⧉");
+      button.type = "button";
+      button.setAttribute("aria-label", `${side === "groom" ? "신랑" : "신부"} 측 ${account.relation} ${account.holder} 계좌번호 복사`);
+      button.addEventListener("click", () => copy(account.number, accounts.isExample ? "예시 계좌번호를 복사했어요." : "계좌번호를 복사했어요."));
+      row.append(info, button);
+      list.append(row);
+    }
+  }
 
   // 달력은 방문자의 시간대와 관계없이 한국 예식 날짜로 표시합니다.
   const dateParts = config.weddingDate.slice(0, 10).split("-").map(Number);

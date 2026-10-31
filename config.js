@@ -6,6 +6,23 @@ window.INVITATION_CONFIG = Object.freeze({
   venue: "어반폴 트레마리스",
   address: "대구광역시 북구 워터폴리스로 5길 3",
   siteUrl: "https://ihs61855.github.io/wedding-invitation/",
+  // 활성화된 네이버 QR 주소를 공유·링크 복사에 사용합니다.
+  qrUrl: "https://m.site.naver.com/2jYKF",
+  useQrUrlForSharing: true,
+  // 실제 계좌를 입력한 다음 isExample을 false로 변경하세요.
+  accounts: {
+    isExample: true,
+    groom: [
+      { relation: "신랑", holder: "임한솔", bank: "예시은행", number: "000-0000-000001" },
+      { relation: "아버지", holder: "임○○", bank: "예시은행", number: "000-0000-000002" },
+      { relation: "어머니", holder: "김○○", bank: "예시은행", number: "000-0000-000003" }
+    ],
+    bride: [
+      { relation: "신부", holder: "장현정", bank: "예시은행", number: "000-0000-000004" },
+      { relation: "아버지", holder: "장○○", bank: "예시은행", number: "000-0000-000005" },
+      { relation: "어머니", holder: "이○○", bank: "예시은행", number: "000-0000-000006" }
+    ]
+  },
   // 프로젝트 Connect에서 복사한 URL과 publishable key를 입력합니다.
   // secret / service_role 키는 절대 사용하지 마세요.
   supabaseUrl: "",
