@@ -46,7 +46,6 @@
 /* Accounts */
 .accounts-section{padding-left:24px;padding-right:24px;background:var(--paper)}
 .accounts-section .section-heading{margin-bottom:24px}
-.account-example{font:11px/1.8 var(--sans);color:#9a8a72;margin-bottom:20px}
 .account-groups{text-align:left;display:grid;gap:12px}
 .account-group{border:1px solid var(--line);border-radius:3px;overflow:hidden}
 .account-group summary{list-style:none;display:flex;align-items:center;justify-content:space-between;padding:17px 20px;background:#edf0e6;font-size:14px;cursor:pointer;min-height:56px}

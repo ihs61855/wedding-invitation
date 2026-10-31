@@ -9,9 +9,8 @@ window.INVITATION_CONFIG = Object.freeze({
   // 활성화된 네이버 QR 주소를 공유·링크 복사에 사용합니다.
   qrUrl: "https://m.site.naver.com/2jYKF",
   useQrUrlForSharing: true,
-  // 실제 계좌를 입력한 다음 isExample을 false로 변경하세요.
+  // 현재 예시 데이터입니다. 실제 계좌를 사용할 때 아래 정보를 교체하세요.
   accounts: {
-    isExample: true,
     groom: [
       { relation: "신랑", holder: "임한솔", bank: "예시은행", number: "000-0000-000001" },
       { relation: "아버지", holder: "임○○", bank: "예시은행", number: "000-0000-000002" },

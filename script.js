@@ -40,7 +40,6 @@
   $("kakao-map").href = `https://map.kakao.com/link/search/${mapQuery}`;
 
   const accounts = config.accounts || {};
-  $("account-example").hidden = !accounts.isExample;
   for (const side of ["groom", "bride"]) {
     const list = $(`${side}-accounts`);
     for (const account of accounts[side] || []) {
@@ -54,7 +53,7 @@
       const button = element("button", "account-copy", "복사 ⧉");
       button.type = "button";
       button.setAttribute("aria-label", `${side === "groom" ? "신랑" : "신부"} 측 ${account.relation} ${account.holder} 계좌번호 복사`);
-      button.addEventListener("click", () => copy(account.number, accounts.isExample ? "예시 계좌번호를 복사했어요." : "계좌번호를 복사했어요."));
+      button.addEventListener("click", () => copy(account.number, "계좌번호를 복사했어요."));
       row.append(info, button);
       list.append(row);
     }
