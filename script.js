@@ -15,6 +15,7 @@
   const bgmButton = $("bgm-toggle");
   let wantsMusic = true;
   let playRequest = 0;
+  // 음원 파일 자체를 절반으로 낮췄으므로 플레이어 볼륨은 유지합니다.
   bgmAudio.volume = 0.35;
 
   function updateBgmButton() {
