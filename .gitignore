@@ -1,0 +1,7 @@
+# 비밀번호를 설정한 서버 초기화 파일은 공개 저장소에 포함하지 않습니다.
+supabase-setup.sql
+*.local.*
+.env
+.env.*
+!.env.example
+preview-*.png

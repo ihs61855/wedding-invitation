@@ -1,54 +1,81 @@
 <!doctype html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>우리 결혼합니다</title>
-  <meta name="description" content="저희의 결혼식에 초대합니다.">
-  <style>
-    * { box-sizing: border-box; }
-
-    body {
-      margin: 0;
-      background: #f6f2ed;
-      color: #433c36;
-      font-family: "Malgun Gothic", sans-serif;
-      line-height: 1.9;
-    }
-
-    main {
-      max-width: 480px;
-      margin: 0 auto;
-      padding: 80px 24px;
-      text-align: center;
-      background: #fffdf9;
-      min-height: 100vh;
-    }
-
-    h1 { font-size: 28px; font-weight: 400; }
-    h2 { font-size: 20px; font-weight: 400; }
-    section { margin-top: 64px; }
-    .label { font-size: 12px; letter-spacing: 3px; }
-  </style>
+  <meta name="theme-color" content="#faf9f6">
+  <meta name="description" content="임한솔 · 장현정, 2027년 3월 6일 토요일 오후 2시 20분. 어반폴 트레마리스에서 소중한 분들을 초대합니다.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="임한솔 · 장현정, 우리 결혼합니다">
+  <meta property="og:description" content="2027. 03. 06. SAT 14:20 · 어반폴 트레마리스">
+  <meta property="og:url" content="https://ihs61855.github.io/wedding-invitation/">
+  <meta property="og:image" content="https://ihs61855.github.io/wedding-invitation/KakaoTalk_20261029_234355944.jpg">
+  <title>임한솔 · 장현정, 우리 결혼합니다</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./style.css">
+  <script src="./config.js" defer></script>
+  <script src="./guestbook.js" defer></script>
+  <script src="./script.js" defer></script>
 </head>
 <body>
-  <main>
-    <p class="label">WEDDING INVITATION</p>
-    <h1>신랑이름 · 신부이름</h1>
-    <p>2027년 5월 15일 오후 1시<br>○○웨딩홀 ○층 ○○홀</p>
-
-    <section>
-      <h2>소중한 분들을 초대합니다</h2>
-      <p>
-        서로의 곁에서 함께 걸어가려 합니다.<br>
-        저희의 시작을 축복해 주세요.
-      </p>
+  <a class="skip-link" href="#invitation">초대글로 바로 가기</a>
+  <main class="invitation">
+    <header class="cover" aria-label="임한솔과 장현정의 결혼식">
+      <div class="cover-picture">
+        <img class="cover-image" src="./KakaoTalk_20261029_234355944.jpg" width="1206" height="1976" alt="푸른 잔디밭에서 서로를 바라보는 두 사람" fetchpriority="high">
+        <div class="cover-heading">
+          <p class="eyebrow">WE ARE GETTING MARRIED</p>
+          <h1>SAVE <em>the</em> DATE</h1>
+          <p class="cover-date">2027. 03. 06</p>
+        </div>
+        <div class="petals" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      </div>
+      <div class="cover-info">
+        <p class="couple-names">임한솔 <span>그리고</span> 장현정</p>
+        <p>2027년 3월 6일 토요일 오후 2시 20분<br>어반폴 트레마리스</p>
+        <a class="scroll-cue" href="#invitation" aria-label="초대글 보기">SCROLL <span>↓</span></a>
+      </div>
+    </header>
+    <section class="section opening" id="invitation" aria-labelledby="invitation-title">
+      <svg class="flower" viewBox="0 0 80 112" fill="none" aria-hidden="true"><path d="M40 101c-2-24 12-34 6-59M39 84C22 84 19 72 18 66c13 1 23 8 21 18ZM43 69c15-3 19-12 20-19-12 3-20 10-20 19ZM43 43C24 39 23 26 30 20c-2-11 12-15 18-8 11-5 22 6 15 15 1 10-9 18-20 16Z"/><path d="M30 20c5 1 9 6 13 12m5-20c-6 3-9 10-5 20m20-5c-7-2-13 0-20 5m-15-2c6 7 17 12 29 6"/></svg>
+      <p class="opening-words">너와 함께하는 모든 계절이<br>우리에게 가장 아름다운 날이 되기를.</p>
+      <div class="section-heading"><p class="eyebrow">INVITATION</p><h2 id="invitation-title">소중한 분들을 초대합니다</h2></div>
+      <p class="invitation-copy">서로의 일상에 가장 편안한 사람이 되어<br>함께 웃고, 함께 꿈꾸며 걸어왔습니다.<br><br>이제 같은 곳을 바라보며<br>두 사람의 새로운 계절을 시작하려 합니다.<br><br>저희의 첫걸음에 함께하시어<br>따뜻한 축복으로 자리를 빛내 주세요.</p>
+      <div class="name-pair"><p><small>신랑</small> 임한솔</p><span aria-hidden="true">&</span><p><small>신부</small> 장현정</p></div>
     </section>
-
-    <section>
-      <h2>오시는 길</h2>
-      <p>○○웨딩홀<br>예식장 주소를 입력하세요.</p>
+    <section class="section date-section" aria-labelledby="date-title">
+      <div class="section-heading"><p class="eyebrow">WEDDING DAY</p><h2 id="date-title">우리의 시작, 그날</h2></div>
+      <p class="date-numerals">2027. 03. 06</p><p class="date-subtitle">토요일 오후 2시 20분</p>
+      <div class="calendar-wrap"><table class="calendar" aria-label="2027년 3월 달력"><caption>2027년 3월</caption><thead><tr><th scope="col">일</th><th scope="col">월</th><th scope="col">화</th><th scope="col">수</th><th scope="col">목</th><th scope="col">금</th><th scope="col">토</th></tr></thead><tbody id="calendar-body"></tbody></table></div>
+      <div class="countdown" role="timer" aria-label="결혼식까지 남은 시간"><div><strong id="days">—</strong><span>DAYS</span></div><b>:</b><div><strong id="hours">—</strong><span>HOURS</span></div><b>:</b><div><strong id="minutes">—</strong><span>MIN</span></div><b>:</b><div><strong id="seconds">—</strong><span>SEC</span></div></div>
+      <p class="countdown-message" id="countdown-message">한솔 ♡ 현정, 함께하는 날을 기다립니다.</p>
+      <button type="button" class="text-button" id="save-calendar">달력에 일정 저장 <span aria-hidden="true">＋</span></button>
     </section>
+    <section class="section gallery-section" aria-labelledby="gallery-title">
+      <div class="section-heading"><p class="eyebrow">OUR MOMENTS</p><h2 id="gallery-title">우리가 함께한 모든 순간</h2><p class="section-description">평범한 날도, 너와 함께라면 특별해.</p></div>
+      <button type="button" class="gallery-main" data-photo="0" aria-label="첫 번째 사진 크게 보기"><img id="gallery-feature" src="./KakaoTalk_20261029_234355944_01.jpg" width="1206" height="1940" alt="초록빛 들판에서 함께 웃는 두 사람" loading="lazy"><span class="photo-caption">OUR LITTLE FOREVER <span>↗</span></span></button>
+      <div class="gallery-bottom"><p><span id="gallery-number">01</span><span class="gallery-divider"></span>02</p><div class="gallery-thumbs"><button type="button" data-select-photo="0" class="selected" aria-label="첫 번째 사진 선택" aria-pressed="true"><img src="./KakaoTalk_20261029_234355944_01.jpg" alt="" loading="lazy"></button><button type="button" data-select-photo="1" aria-label="두 번째 사진 선택" aria-pressed="false"><img src="./KakaoTalk_20261029_234355944.jpg" alt="" loading="lazy"></button></div></div>
+      <p class="small-note">사진을 누르면 크게 보실 수 있습니다.</p>
+    </section>
+    <section class="section location-section" aria-labelledby="location-title">
+      <div class="section-heading"><p class="eyebrow">LOCATION</p><h2 id="location-title">오시는 길</h2></div>
+      <h3 class="venue-name">어반폴 트레마리스</h3><p class="venue-address">대구광역시 북구 워터폴리스로 5길 3<br><span>지번 : 대구광역시 북구 검단동 1922</span></p>
+      <button type="button" class="text-button" id="copy-address">주소 복사 <span aria-hidden="true">⧉</span></button>
+      <div class="map-wrap"><iframe title="어반폴 트레마리스 위치 지도" src="https://maps.google.com/maps?q=%EC%96%B4%EB%B0%98%ED%8F%B4%20%ED%8A%B8%EB%A0%88%EB%A7%88%EB%A6%AC%EC%8A%A4%20%EB%8C%80%EA%B5%AC&output=embed&hl=ko" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe></div>
+      <nav class="map-links" aria-label="지도 앱으로 보기"><a id="naver-map" target="_blank" rel="noopener noreferrer"><span class="map-icon naver">N</span>네이버 지도 <span aria-hidden="true">↗</span></a><a id="kakao-map" target="_blank" rel="noopener noreferrer"><span class="map-icon kakao">●</span>카카오맵 <span aria-hidden="true">↗</span></a></nav>
+      <div class="travel-info"><p class="travel-label">교통 · 주차 안내</p><p>자세한 교통편과 주차 안내는<br>예식장 홈페이지에서 확인해 주세요.</p><a href="https://urbanfall.kr/location" target="_blank" rel="noopener noreferrer">예식장 안내 보기 <span aria-hidden="true">↗</span></a></div>
+    </section>
+    <section class="section guestbook-section" aria-labelledby="guestbook-title">
+      <div class="section-heading"><p class="eyebrow">GUEST BOOK</p><h2 id="guestbook-title">따뜻한 한마디</h2><p class="section-description">두 사람에게 축하의 마음을 남겨 주세요.</p></div>
+      <form id="guestbook-form" class="guestbook-form"><fieldset id="guestbook-fields" disabled><legend class="sr-only">축하 메시지 작성</legend><div class="guestbook-top"><div class="side-options"><label><input type="radio" name="side" value="groom" required checked><span>신랑 측</span></label><label><input type="radio" name="side" value="bride" required><span>신부 측</span></label></div><label class="sr-only" for="guest-name">이름</label><input id="guest-name" name="name" type="text" placeholder="이름" autocomplete="name" maxlength="20" required></div><label class="sr-only" for="guest-message">축하 메시지</label><textarea id="guest-message" name="message" placeholder="짧은 축하 한마디를 남겨 주세요." maxlength="200" rows="3" required></textarea><div class="form-bottom"><span class="character-count"><span id="character-count">0</span> / 200</span><button type="submit" class="primary-button" id="post-comment">마음 남기기 <span aria-hidden="true">↗</span></button></div></fieldset></form>
+      <p id="guestbook-status" class="guestbook-status" role="status" aria-live="polite">방명록을 준비하고 있어요.</p>
+      <div class="guestbook-list-heading"><p>축하 메시지 <span id="comment-count">0</span></p><button type="button" class="text-button" id="refresh-comments" hidden>새로고침 ↻</button></div>
+      <div id="comment-list" class="comment-list" aria-live="polite"></div><nav id="guestbook-pagination" class="pagination" aria-label="방명록 페이지" hidden></nav>
+    </section>
+    <footer class="closing"><div class="closing-photo"><img src="./KakaoTalk_20261029_234355944_01.jpg" width="1206" height="1940" alt="함께할 날들을 약속하는 두 사람" loading="lazy"><div><p>오래도록, 지금처럼</p><span>서로의 가장 좋은 친구가 되겠습니다.</span></div></div><div class="closing-bottom"><p class="closing-names">한솔 <span>♡</span> 현정</p><p>소중한 걸음, 마음 깊이 간직하겠습니다.</p><button type="button" class="share-button" id="share-invitation">초대장 공유하기 <span aria-hidden="true">↗</span></button><button type="button" class="text-button" id="copy-link">링크 복사하기</button><p class="footer-date">2027. 03. 06. <span>WITH LOVE</span></p></div></footer>
   </main>
+  <dialog id="photo-dialog" class="photo-dialog" aria-label="사진 크게 보기"><button type="button" class="dialog-close" id="close-photo" aria-label="사진 닫기">×</button><div class="photo-stage"><button type="button" class="photo-arrow" id="previous-photo" aria-label="이전 사진">‹</button><img id="large-photo" alt=""><button type="button" class="photo-arrow" id="next-photo" aria-label="다음 사진">›</button></div><p id="photo-position">1 / 2</p></dialog>
+  <dialog id="delete-dialog" class="delete-dialog" aria-labelledby="delete-title"><form id="delete-form"><p class="eyebrow">GUEST BOOK</p><h2 id="delete-title">메시지를 삭제할까요?</h2><p>삭제 비밀번호를 입력해 주세요.</p><label class="sr-only" for="delete-password">삭제 비밀번호</label><input type="password" id="delete-password" autocomplete="off" maxlength="100" placeholder="비밀번호" required><p id="delete-error" class="form-error" role="alert"></p><div class="delete-actions"><button type="button" class="secondary-button" id="cancel-delete">취소</button><button type="submit" class="primary-button" id="confirm-delete">삭제하기</button></div></form></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
 </body>
 </html>
