@@ -35,9 +35,6 @@
       } catch (error) { if (error.name !== "AbortError") copy(shareUrl, "청첩장 링크를 복사했어요."); }
     } else await copy(shareUrl, "청첩장 링크를 복사했어요.");
   });
-  const mapQuery = encodeURIComponent(`${config.venue} ${config.address}`);
-  $("naver-map").href = `https://map.naver.com/p/search/${mapQuery}`;
-  $("kakao-map").href = `https://map.kakao.com/link/search/${mapQuery}`;
 
   const accounts = config.accounts || {};
   for (const side of ["groom", "bride"]) {
@@ -110,8 +107,8 @@
   });
 
   const photos = [
-    { src: "./images/gallery-01.jpg", alt: "초록빛 들판에서 함께 웃는 두 사람" },
-    { src: "./images/main.jpg", alt: "푸른 잔디밭에서 서로를 바라보는 두 사람" }
+    { src: "./images/main.jpg?v=a7976f656582", alt: "푸른 잔디밭에서 서로를 바라보는 두 사람" },
+    { src: "./images/gallery-01.jpg", alt: "초록빛 들판에서 함께 웃는 두 사람" }
   ];
   let photoIndex = 0;
   const photoDialog = $("photo-dialog");
