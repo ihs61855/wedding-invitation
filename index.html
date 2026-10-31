@@ -24,16 +24,20 @@
   <link rel="canonical" href="https://ihs61855.github.io/wedding-invitation/">
   <title>임한솔 · 장현정, 우리 결혼합니다</title>
   <link rel="icon" href="./favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="./style.css">
+  <link rel="stylesheet" href="./style.css?v=db343411d6bb">
   <script src="./config.js" defer></script>
   <script src="./guestbook.js" defer></script>
-  <script src="./script.js" defer></script>
+  <script src="./script.js?v=51d936f2ff70" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#invitation">초대글로 바로 가기</a>
   <main class="invitation">
     <header class="cover" aria-label="임한솔과 장현정의 결혼식">
       <div class="cover-picture">
+        <button type="button" class="bgm-button" id="bgm-toggle" aria-label="배경음악 켜기" aria-pressed="false" aria-controls="bgm-audio" title="배경음악 켜기">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4V5Z"/><path class="sound-waves" d="M15 8a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"/><path class="sound-off-mark" d="m16 9 5 6m0-6-5 6"/></svg>
+          <span id="bgm-label">소리 켜기</span>
+        </button>
         <img class="cover-image" src="./images/main.jpg?v=a7976f656582" width="980" height="1605" alt="푸른 잔디밭에서 서로를 바라보는 두 사람" fetchpriority="high">
         <div class="cover-heading">
           <p class="eyebrow">WE ARE GETTING MARRIED</p>
@@ -158,6 +162,7 @@
   </main>
   <dialog id="photo-dialog" class="photo-dialog" aria-label="사진 크게 보기"><button type="button" class="dialog-close" id="close-photo" aria-label="사진 닫기">×</button><div class="photo-stage"><button type="button" class="photo-arrow" id="previous-photo" aria-label="이전 사진">‹</button><img id="large-photo" alt=""><button type="button" class="photo-arrow" id="next-photo" aria-label="다음 사진">›</button></div><p id="photo-position">1 / 2</p></dialog>
   <dialog id="delete-dialog" class="delete-dialog" aria-labelledby="delete-title"><form id="delete-form"><p class="eyebrow">GUEST BOOK</p><h2 id="delete-title">메시지를 삭제할까요?</h2><p>삭제 비밀번호를 입력해 주세요.</p><label class="sr-only" for="delete-password">삭제 비밀번호</label><input type="password" id="delete-password" autocomplete="off" maxlength="100" placeholder="비밀번호" required><p id="delete-error" class="form-error" role="alert"></p><div class="delete-actions"><button type="button" class="secondary-button" id="cancel-delete">취소</button><button type="submit" class="primary-button" id="confirm-delete">삭제하기</button></div></form></dialog>
+  <audio id="bgm-audio" src="./audio/bgm.mp3" autoplay loop preload="auto"></audio>
   <div id="toast" class="toast" role="status" aria-live="polite"></div>
 </body>
 </html>

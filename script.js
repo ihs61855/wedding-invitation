@@ -10,6 +10,70 @@
     clearTimeout(toastTimer);
     toastTimer = setTimeout(() => $("toast").classList.remove("visible"), 3000);
   }
+
+  const bgmAudio = $("bgm-audio");
+  const bgmButton = $("bgm-toggle");
+  let wantsMusic = true;
+  let playRequest = 0;
+  bgmAudio.volume = 0.35;
+
+  function updateBgmButton() {
+    const playing = !bgmAudio.paused && !bgmAudio.ended && !bgmAudio.muted;
+    const label = playing ? "배경음악 끄기" : "배경음악 켜기";
+    bgmButton.setAttribute("aria-pressed", String(playing));
+    bgmButton.setAttribute("aria-label", label);
+    bgmButton.title = label;
+    $("bgm-label").textContent = playing ? "소리 끄기" : "소리 켜기";
+  }
+
+  async function startMusic(notifyOnFailure = false) {
+    if (!wantsMusic) return;
+    const request = ++playRequest;
+    bgmButton.setAttribute("aria-busy", "true");
+    try {
+      bgmAudio.muted = false;
+      await bgmAudio.play();
+    } catch (error) {
+      if (request === playRequest && notifyOnFailure && error.name !== "AbortError") {
+        toast(error.name === "NotAllowedError" ? "소리 버튼을 한 번 더 눌러 주세요." : "음악을 불러오지 못했어요. 잠시 후 다시 눌러 주세요.");
+      }
+    } finally {
+      if (request === playRequest) {
+        bgmButton.removeAttribute("aria-busy");
+        updateBgmButton();
+      }
+    }
+  }
+
+  bgmButton.addEventListener("click", () => {
+    if (!bgmAudio.paused || bgmButton.getAttribute("aria-busy") === "true") {
+      wantsMusic = false;
+      playRequest++;
+      bgmAudio.pause();
+      bgmButton.removeAttribute("aria-busy");
+      updateBgmButton();
+    } else {
+      wantsMusic = true;
+      startMusic(true);
+    }
+  });
+
+  function resumeMusicOnInteraction(event) {
+    if (event.target instanceof Element && event.target.closest("#bgm-toggle")) return;
+    if (wantsMusic && bgmAudio.paused) startMusic();
+  }
+  document.addEventListener("pointerdown", resumeMusicOnInteraction, { capture: true, passive: true });
+  document.addEventListener("keydown", resumeMusicOnInteraction, { capture: true });
+  bgmAudio.addEventListener("playing", () => {
+    document.removeEventListener("pointerdown", resumeMusicOnInteraction, true);
+    document.removeEventListener("keydown", resumeMusicOnInteraction, true);
+    updateBgmButton();
+  });
+  for (const event of ["play", "pause", "ended", "volumechange", "error"]) bgmAudio.addEventListener(event, updateBgmButton);
+  updateBgmButton();
+  // 먼저 자동 재생을 시도하고, 브라우저가 차단하면 첫 사용자 입력에서 다시 시도합니다.
+  startMusic();
+
   async function copy(text, success) {
     try {
       if (navigator.clipboard && window.isSecureContext) await navigator.clipboard.writeText(text);
