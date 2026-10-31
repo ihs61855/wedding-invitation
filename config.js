@@ -13,17 +13,17 @@ window.INVITATION_CONFIG = Object.freeze({
   accounts: {
     groom: [
       { relation: "신랑", holder: "임한솔", bank: "예시은행", number: "000-0000-000001" },
-      { relation: "아버지", holder: "임○○", bank: "예시은행", number: "000-0000-000002" },
-      { relation: "어머니", holder: "김○○", bank: "예시은행", number: "000-0000-000003" }
+      { relation: "아버지", holder: "임창범", bank: "예시은행", number: "000-0000-000002" },
+      { relation: "어머니", holder: "이선완", bank: "예시은행", number: "000-0000-000003" }
     ],
     bride: [
       { relation: "신부", holder: "장현정", bank: "예시은행", number: "000-0000-000004" },
-      { relation: "아버지", holder: "장○○", bank: "예시은행", number: "000-0000-000005" },
-      { relation: "어머니", holder: "이○○", bank: "예시은행", number: "000-0000-000006" }
+      { relation: "아버지", holder: "XXX", bank: "예시은행", number: "000-0000-000005" },
+      { relation: "어머니", holder: "YYY", bank: "예시은행", number: "000-0000-000006" }
     ]
   },
   // 프로젝트 Connect에서 복사한 URL과 publishable key를 입력합니다.
   // secret / service_role 키는 절대 사용하지 마세요.
-  supabaseUrl: "",
-  supabasePublishableKey: ""
+  supabaseUrl: "https://pgzclyszfnytrcocmbmp.supabase.co",
+  supabasePublishableKey: "sb_publishable_dG6VzB6pyumkZLuCXVa0ig_PfgXGCIP"
 });
