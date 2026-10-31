@@ -106,14 +106,17 @@
     setTimeout(() => URL.revokeObjectURL(url), 1000);
   });
 
-  const photos = [
-    { src: "./images/main.jpg?v=a7976f656582", alt: "푸른 잔디밭에서 서로를 바라보는 두 사람" },
-    { src: "./images/gallery-01.jpg", alt: "초록빛 들판에서 함께 웃는 두 사람" }
-  ];
+  // 썸네일의 실제 이미지가 유일한 사진 목록입니다. 별도 목록과 순서를 중복 관리하지 않습니다.
+  const thumbnailButtons = [...document.querySelectorAll("[data-select-photo]")];
+  const photos = thumbnailButtons.map(button => {
+    const image = button.querySelector("img");
+    return { src: image.getAttribute("src"), alt: image.alt };
+  });
   let photoIndex = 0;
   const photoDialog = $("photo-dialog");
   const deleteDialog = $("delete-dialog");
   function selectPhoto(index) {
+    if (!photos.length) return;
     photoIndex = (index + photos.length) % photos.length;
     const photo = photos[photoIndex];
     $("gallery-feature").src = photo.src;
@@ -121,14 +124,20 @@
     $("large-photo").src = photo.src;
     $("large-photo").alt = photo.alt;
     $("gallery-number").textContent = String(photoIndex + 1).padStart(2, "0");
+    $("gallery-total").textContent = String(photos.length).padStart(2, "0");
     $("photo-position").textContent = `${photoIndex + 1} / ${photos.length}`;
     document.querySelector(".gallery-main").setAttribute("aria-label", `${photoIndex + 1}번째 사진 크게 보기`);
-    document.querySelectorAll("[data-select-photo]").forEach((button, i) => {
+    thumbnailButtons.forEach((button, i) => {
       button.classList.toggle("selected", i === photoIndex);
       button.setAttribute("aria-pressed", String(i === photoIndex));
     });
   }
-  document.querySelectorAll("[data-select-photo]").forEach(button => button.addEventListener("click", () => selectPhoto(Number(button.dataset.selectPhoto))));
+  thumbnailButtons.forEach((button, index) => button.addEventListener("click", () => selectPhoto(index)));
+  const hasMultiplePhotos = photos.length > 1;
+  $("previous-photo").hidden = !hasMultiplePhotos;
+  $("next-photo").hidden = !hasMultiplePhotos;
+  photoDialog.classList.toggle("single-photo", !hasMultiplePhotos);
+  selectPhoto(0);
   document.querySelector(".gallery-main").addEventListener("click", () => { selectPhoto(photoIndex); photoDialog.showModal(); document.body.style.overflow = "hidden"; });
   $("previous-photo").addEventListener("click", () => selectPhoto(photoIndex - 1));
   $("next-photo").addEventListener("click", () => selectPhoto(photoIndex + 1));
@@ -140,7 +149,7 @@
   let touchStart = null;
   photoDialog.addEventListener("touchstart", event => { touchStart = event.changedTouches[0].clientX; }, { passive: true });
   photoDialog.addEventListener("touchend", event => {
-    if (touchStart === null) return;
+    if (touchStart === null || !hasMultiplePhotos) return;
     const diff = event.changedTouches[0].clientX - touchStart;
     if (Math.abs(diff) > 50) selectPhoto(photoIndex + (diff < 0 ? 1 : -1));
     touchStart = null;
