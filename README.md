@@ -74,7 +74,7 @@ SQL Editor가 삭제 관련 경고를 표시할 수 있지만, 초기 설정은 
 현재 `useQrUrlForSharing`은 `true`이며 공유·링크 복사에는 QR 주소를 사용합니다.
 원본 주소를 공유하려면 이 값을 `false`로 바꿉니다.
 
-공유 썸네일은 `social-preview.jpg`(1200×630)입니다. `share-preview.html`은 해당 이미지를 만든 원본 화면입니다.
+공유 썸네일은 `images/share-thumbnail.jpg`(1200×630)입니다. `share-preview.html`은 해당 이미지를 만든 원본 화면입니다.
 Open Graph와 Twitter Card 메타데이터에 절대 주소로 연결했으며, 실제 미리보기는 Push 이후 해당 파일이 공개된 상태에서 확인합니다.
 네이버 QR 페이지 자체의 대표 이미지는 네이버 QR 편집 화면에서도 설정해야 할 수 있습니다.
 
@@ -86,7 +86,15 @@ Open Graph와 Twitter Card 메타데이터에 절대 주소로 연결했으며, 
 - `supabase/schema.sql`: 비밀번호가 없는 서버 설정 템플릿
 
 화면의 날짜는 `index.html`에도 있으므로 예식 정보를 변경할 때 설정 파일과 함께 수정하세요.
-사진을 교체할 때는 기존 파일명을 유지하거나 `index.html`, `script.js`, `og:image` 경로를 함께 바꿉니다.
+사진과 공유 썸네일은 `images` 폴더에서 관리합니다.
+
+| 파일 | 용도 |
+|---|---|
+| `images/main.jpg` | 첫 화면 대표 사진, 갤러리 두 번째 사진 |
+| `images/gallery-01.jpg` | 갤러리 첫 번째 사진, 하단 마무리 사진 |
+| `images/share-thumbnail.jpg` | 링크 공유 미리보기 썸네일 (1200×630) |
+
+사진을 교체할 때는 위 파일명을 유지하면 됩니다. 이름을 바꾸려면 `index.html`, `script.js`, `share-preview.html`과 공유 이미지 경로도 함께 수정합니다.
 글꼴은 Google Fonts에서 불러오며 연결되지 않으면 시스템 바탕체를 사용합니다.
 
 ## 검증

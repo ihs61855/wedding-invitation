@@ -110,8 +110,8 @@
   });
 
   const photos = [
-    { src: "./KakaoTalk_20261029_234355944_01.jpg", alt: "초록빛 들판에서 함께 웃는 두 사람" },
-    { src: "./KakaoTalk_20261029_234355944.jpg", alt: "푸른 잔디밭에서 서로를 바라보는 두 사람" }
+    { src: "./images/gallery-01.jpg", alt: "초록빛 들판에서 함께 웃는 두 사람" },
+    { src: "./images/main.jpg", alt: "푸른 잔디밭에서 서로를 바라보는 두 사람" }
   ];
   let photoIndex = 0;
   const photoDialog = $("photo-dialog");
