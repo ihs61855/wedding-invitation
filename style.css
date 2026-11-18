@@ -63,6 +63,7 @@
 .charter-stop+.charter-stop{border-top:1px solid #e4e7dc}
 .charter-stop-number{font:11px Georgia,serif;color:#a3ad97}
 .charter-stop p{font-size:14px;color:#59634e;line-height:1.8}
+.charter-note{border-top:1px solid #e4e7dc;padding:16px 0;font:12px/1.9 var(--sans);color:#7b8271;text-align:center}
 
 /* Accounts */
 .accounts-section{padding-left:24px;padding-right:24px;background:var(--paper)}
