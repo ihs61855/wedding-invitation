@@ -67,6 +67,36 @@ SQL Editor가 삭제 관련 경고를 표시할 수 있지만, 초기 설정은 
 클라이언트 IP 헤더를 받을 수 없는 환경에서는 공유 제한이 적용될 수 있습니다.
 비밀번호를 아는 사람은 다른 사람의 댓글도 삭제할 수 있는 공통 관리자 비밀번호 방식입니다.
 
+## Supabase 정기 조회
+
+`.github/workflows/keep-supabase-alive.yml`은 GitHub 서버에서 한국 시간 매일
+01:17, 09:17, 17:17에 기존 `list_guestbook` RPC로 방명록을 조회합니다.
+컴퓨터를 꺼도 실행되며, 댓글을 추가·수정·삭제하지 않습니다.
+사이트의 `config.js`에 있는 공개 publishable key를 사용하므로 별도의 Secrets나 SQL 설정은 필요 없습니다.
+댓글 내용과 키는 실행 로그에 출력하지 않습니다.
+
+실행 방법:
+
+1. 워크플로우와 스크립트를 커밋하고 기본 브랜치 `main`에 Push합니다.
+2. GitHub 저장소 → Actions에서 필요하면 워크플로우 사용을 활성화합니다.
+3. `Keep Supabase Alive` → `Run workflow`로 한 번 실행합니다.
+4. `Read guestbook from Supabase`에 `Supabase 방명록 조회 성공`과 초록색 체크가 표시되는지 확인합니다.
+5. 이후 예약 실행 내역도 확인합니다. 네트워크 오류는 최대 3번 재시도하며, 계속 실패하면 실행이 실패로 표시됩니다.
+
+로컬에서도 Node.js 24에서 `node scripts/check-guestbook.cjs`로 같은 조회를 확인할 수 있습니다.
+
+이 설정은 [정기 조회 방식의 Keep-Alive 가이드](https://velog.io/@sc7258/Supabase-Free-%ED%94%8C%EB%9E%9C-%EC%9E%90%EB%8F%99-%EC%9D%BC%EC%8B%9C%EC%A0%95%EC%A7%80-%EB%B0%A9%EC%A7%80)를
+현재 방명록에 맞게 간소화한 것입니다. 무료 프로젝트의 자동 일시정지 방지를 보장하지는 않습니다.
+[Supabase 공식 기준](https://supabase.com/docs/guides/platform/free-project-pausing)은 최근 일주일간 활동량을 평가하며,
+하루 몇 번의 DB 요청이면 보통 충분하다고 안내하지만 정확한 최소 횟수는 명시하지 않습니다.
+이미 일시정지된 프로젝트를 자동 복구하는 기능도 아니므로, 그 경우에는 대시보드에서 재개해야 합니다.
+
+[GitHub의 예약 실행 제한](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#schedule)도 적용됩니다.
+공개 저장소에서 60일간 저장소 활동이 없으면 예약 워크플로우가 자동 비활성화될 수 있습니다.
+예약 실행 자체만으로 이 조건이 해제된다고 가정하지 말고, 장기간 운영 시 한 달에 한 번 Actions 상태를 확인하세요.
+비활성화돼 있으면 `Enable workflow`로 다시 활성화합니다.
+GitHub 사정으로 예약 실행이 지연되거나 누락될 수도 있습니다.
+
 ## 수정할 파일
 
 BGM 파일은 `audio/bgm.mp3`이며, 제공받은 YouTube 영상(https://www.youtube.com/watch?v=T_D_pp283nw)의 음원을 사용합니다.
