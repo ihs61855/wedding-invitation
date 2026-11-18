@@ -9,17 +9,17 @@ window.INVITATION_CONFIG = Object.freeze({
   // 활성화된 네이버 QR 주소를 공유·링크 복사에 사용합니다.
   qrUrl: "https://m.site.naver.com/2jYKF",
   useQrUrlForSharing: true,
-  // 현재 예시 데이터입니다. 실제 계좌를 사용할 때 아래 정보를 교체하세요.
+  // 신랑 측은 실제 계좌입니다. 신부 측 예시 계좌는 실제 정보로 교체하세요.
   accounts: {
     groom: [
-      { relation: "신랑", holder: "임한솔", bank: "예시은행", number: "000-0000-000001" },
-      { relation: "아버지", holder: "임창범", bank: "예시은행", number: "000-0000-000002" },
-      { relation: "어머니", holder: "이선완", bank: "예시은행", number: "000-0000-000003" }
+      { relation: "신랑", holder: "임한솔", bank: "새마을금고", number: "9003250812734" },
+      { relation: "아버지", holder: "임창범", bank: "새마을금고", number: "9003-2223-3159-1" },
+      { relation: "어머니", holder: "이선완", bank: "iM뱅크", number: "221-08-011043-4" }
     ],
     bride: [
       { relation: "신부", holder: "장현정", bank: "예시은행", number: "000-0000-000004" },
-      { relation: "아버지", holder: "XXX", bank: "예시은행", number: "000-0000-000005" },
-      { relation: "어머니", holder: "YYY", bank: "예시은행", number: "000-0000-000006" }
+      { relation: "아버지", holder: "장문석", bank: "예시은행", number: "000-0000-000005" },
+      { relation: "어머니", holder: "김윤숙", bank: "예시은행", number: "000-0000-000006" }
     ]
   },
   // 프로젝트 Connect에서 복사한 URL과 publishable key를 입력합니다.
