@@ -136,6 +136,7 @@ Open Graph와 Twitter Card 메타데이터에 절대 주소로 연결했으며, 
 | `images/gallery-01.jpg` ~ `images/gallery-10.jpg` | 중간 갤러리 1~10번 사진 (`gallery-01.jpg`는 하단 마무리 사진에도 사용) |
 | `images/thumbs/gallery-01.jpg` ~ `gallery-10.jpg` | 갤러리 선택 버튼에 사용하는 작은 사진 |
 | `images/share-thumbnail.jpg` | 링크 공유 미리보기 썸네일 (1200×630) |
+| `images/map.png` | 교통 안내의 셔틀버스 탑승 위치 약도 (클릭하면 크게 보기) |
 
 사진을 교체할 때는 위 파일명을 유지하고 `index.html`의 해당 이미지 주소에 붙은 `v` 값을 갱신합니다.
 갤러리는 HTML의 `data-photo-src`에 있는 사진 주소를 선택 화면과 확대 화면에서 함께 사용합니다.
