@@ -171,10 +171,13 @@
     setTimeout(() => URL.revokeObjectURL(url), 1000);
   });
 
-  const photos = [
-    { src: "./images/main.jpg?v=a7976f656582", alt: "푸른 잔디밭에서 서로를 바라보는 두 사람" },
-    { src: "./images/gallery-01.jpg", alt: "초록빛 들판에서 함께 웃는 두 사람" }
-  ];
+  // 썸네일에 연결된 주소를 공유하여 선택 사진과 확대 사진의 순서를 일치시킵니다.
+  const photoButtons = [...document.querySelectorAll("[data-select-photo]")];
+  const photos = photoButtons.map(button => ({
+    src: button.dataset.photoSrc,
+    alt: button.querySelector("img").alt
+  }));
+  $("gallery-total").textContent = String(photos.length).padStart(2, "0");
   let photoIndex = 0;
   const photoDialog = $("photo-dialog");
   const deleteDialog = $("delete-dialog");
@@ -188,12 +191,12 @@
     $("gallery-number").textContent = String(photoIndex + 1).padStart(2, "0");
     $("photo-position").textContent = `${photoIndex + 1} / ${photos.length}`;
     document.querySelector(".gallery-main").setAttribute("aria-label", `${photoIndex + 1}번째 사진 크게 보기`);
-    document.querySelectorAll("[data-select-photo]").forEach((button, i) => {
+    photoButtons.forEach((button, i) => {
       button.classList.toggle("selected", i === photoIndex);
       button.setAttribute("aria-pressed", String(i === photoIndex));
     });
   }
-  document.querySelectorAll("[data-select-photo]").forEach(button => button.addEventListener("click", () => selectPhoto(Number(button.dataset.selectPhoto))));
+  photoButtons.forEach((button, index) => button.addEventListener("click", () => selectPhoto(index)));
   document.querySelector(".gallery-main").addEventListener("click", () => { selectPhoto(photoIndex); photoDialog.showModal(); document.body.style.overflow = "hidden"; });
   $("previous-photo").addEventListener("click", () => selectPhoto(photoIndex - 1));
   $("next-photo").addEventListener("click", () => selectPhoto(photoIndex + 1));

@@ -132,12 +132,20 @@ Open Graph와 Twitter Card 메타데이터에 절대 주소로 연결했으며, 
 
 | 파일 | 용도 |
 |---|---|
-| `images/main.jpg` | 첫 화면 대표 사진, 갤러리 첫 번째 사진 |
-| `images/gallery-01.jpg` | 갤러리 두 번째 사진, 하단 마무리 사진 |
+| `images/main.jpg` | 첫 화면 대표 사진, 공유 썸네일의 원본 |
+| `images/gallery-01.jpg` ~ `images/gallery-10.jpg` | 중간 갤러리 1~10번 사진 (`gallery-01.jpg`는 하단 마무리 사진에도 사용) |
+| `images/thumbs/gallery-01.jpg` ~ `gallery-10.jpg` | 갤러리 선택 버튼에 사용하는 작은 사진 |
 | `images/share-thumbnail.jpg` | 링크 공유 미리보기 썸네일 (1200×630) |
 
-사진을 교체할 때는 위 파일명을 유지하면 됩니다. 이름을 바꾸려면 `index.html`, `script.js`, `share-preview.html`과 공유 이미지 경로도 함께 수정합니다.
-대표 사진을 교체하면 공유 썸네일도 다시 생성하고 이미지 주소의 `v` 값을 갱신합니다. 현재 첫 화면과 갤러리 첫 사진, 썸네일 원본에 같은 최신 `main.jpg`를 사용합니다.
+사진을 교체할 때는 위 파일명을 유지하고 `index.html`의 해당 이미지 주소에 붙은 `v` 값을 갱신합니다.
+갤러리는 HTML의 `data-photo-src`에 있는 사진 주소를 선택 화면과 확대 화면에서 함께 사용합니다.
+사진을 추가하려면 `.gallery-thumbs`에 버튼을 추가하고 `data-select-photo`를 0부터 순서대로 지정합니다.
+갤러리 사진 목록과 전체 수는 이 버튼들에서 자동으로 읽습니다. 초기 HTML의 전체 수와 확대 화면의 초기 숫자도 함께 맞춥니다.
+대표 사진을 교체하면 `share-preview.html`의 사진 주소도 갱신한 뒤 공유 썸네일을 다시 생성하고 공유 이미지 주소의 `v` 값을 갱신합니다.
+
+2026년 11월 21일 업로드한 `newImage/main.jpg`는 대표 사진으로,
+번호 없는 카카오톡 사진과 `_02`~`_10` 사진은 각각 `gallery-01.jpg`~`gallery-10.jpg`로 정리했습니다.
+사이트용 사진은 원래 비율을 유지하며 크기와 JPEG 용량을 줄였고, 원본은 저장소 상위의 `photo-originals-20261121-c431a8c4` 폴더에 보관했습니다.
 글꼴은 Google Fonts에서 불러오며 연결되지 않으면 시스템 바탕체를 사용합니다.
 
 ## 검증
